@@ -10,7 +10,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from torchvision.datasets import DatasetFolder, MNIST, CIFAR10
 
-from ..utils import Log
+# import log
 
 
 support_list = (
@@ -39,6 +39,15 @@ def accuracy(output, target, topk=(1,)):
         res.append(correct_k.mul_(100.0 / batch_size))
     return res
 
+
+class Log:
+    def __init__(self, log_path):
+        self.log_path = log_path
+
+    def __call__(self, msg):
+        print(msg, end='\n')
+        with open(self.log_path,'a') as f:
+            f.write(msg)
 
 class Base(object):
     """Base class for backdoor training and testing.
