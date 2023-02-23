@@ -80,7 +80,7 @@ schedule = {
     'save_dir': 'experiments',
     'experiment_name': 'BaselineMNISTNetwork_MNIST_BadNets'
 }
-badnets.train(schedule)
+# badnets.train(schedule)
 
 
 # ========== ResNet-18_CIFAR-10_BadNets ==========

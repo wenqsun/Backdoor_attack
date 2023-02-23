@@ -193,6 +193,7 @@ class AddCIFAR10Trigger(AddTrigger):
         img = F.pil_to_tensor(img)
         img = self.add_trigger(img)
         img = Image.fromarray(img.permute(1, 2, 0).numpy())
+        print(f'')
         return img
 
 
@@ -359,9 +360,12 @@ class PoisonedCIFAR10(CIFAR10):
     def __getitem__(self, index):
         img, target = self.data[index], int(self.targets[index])
 
+        print(f'The type of image is {type(img)}, the shape of image is {img.shape}')
         # doing this so that it is consistent with all other datasets
         # to return a PIL Image
         img = Image.fromarray(img)
+
+        print(f'The type of img is {type(img)}, the size of img is {img.size}')
 
         if index in self.poisoned_set:
             img = self.poisoned_transform(img)
